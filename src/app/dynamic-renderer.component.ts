@@ -25,15 +25,17 @@ interface Section {
     imports: [CommonModule, HttpClientModule],
     template: `
     <div *ngFor="let section of sections; let i = index">
-      <div *ngIf="section.type === 'html'" [innerHTML]="section.content"></div>
-      <div *ngIf="section.type === 'component'">
+      <div *ngIf="section.type === 'html'" [innerHTML]="section.content" [ngStyle]="section.styles"></div>
+      <div *ngIf="section.type === 'component'" [ngStyle]="section.styles">
         <ng-container #dynamicContainer></ng-container>
       </div>
       <div *ngIf="section.type === 'row'" class="row-container" [ngStyle]="section.styles">
         <ng-container *ngFor="let column of section.columns">
           <div [ngStyle]="column.styles">
             <div *ngIf="column.type === 'html'" [innerHTML]="column.content"></div>
-            <ng-container *ngIf="column.type === 'component'" #dynamicContainer></ng-container>
+            <div *ngIf="column.type === 'component'" [ngStyle]="column.styles">
+              <ng-container #dynamicContainer></ng-container>
+            </div>
           </div>
         </ng-container>
       </div>
