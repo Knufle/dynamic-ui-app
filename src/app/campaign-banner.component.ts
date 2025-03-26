@@ -6,17 +6,15 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     imports: [CommonModule],
     template: `
-    <div class="banner">
+    <div class="banner" [ngStyle]="styles">
       <h2>{{ title }}</h2>
       <img [src]="imageUrl" alt="Banner Image">
     </div>
   `,
-    styles: [`
-    .banner { text-align: center; padding: 20px; background: #f4f4f4; }
-    .banner img { max-width: 100%; height: auto; }
-  `]
+    styles: []
 })
 export class CampaignBannerComponent {
     @Input() title!: string;
     @Input() imageUrl!: string;
+    @Input() styles?: Record<string, string>;
 }

@@ -3,10 +3,23 @@
       "sections": [
         {
           "type": "row",
+          "styles": {
+            "display": "flex",
+            "flexDirection": "row",
+            "gap": "30px",
+            "margin": "20px 0",
+            "alignItems": "center"
+          },
           "columns": [
             {
               "type": "component",
               "component": "CampaignBannerComponent",
+              "styles": {
+                "flex": "2",
+                "backgroundColor": "#f8f8f8",
+                "padding": "20px",
+                "borderRadius": "8px"
+              },
               "inputs": {
                 "title": "Special Offer!",
                 "imageUrl": "https://picsum.photos/200"
@@ -15,6 +28,12 @@
             {
               "type": "component",
               "component": "CampaignBannerComponent",
+              "styles": {
+                "flex": "1",
+                "backgroundColor": "#f0f0f0",
+                "padding": "15px",
+                "borderRadius": "8px"
+              },
               "inputs": {
                 "title": "Another Offer!",
                 "imageUrl": "https://picsum.photos/200"
@@ -29,6 +48,12 @@
         {
           "type": "component",
           "component": "CampaignBannerComponent",
+          "styles": {
+            "margin": "20px 0",
+            "padding": "30px",
+            "backgroundColor": "#e8e8e8",
+            "borderRadius": "12px"
+          },
           "inputs": {
             "title": "Another Offer!",
             "imageUrl": "https://picsum.photos/200"

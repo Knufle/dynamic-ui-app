@@ -7,6 +7,7 @@ interface Column {
     content?: string;
     component?: string;
     inputs?: Record<string, unknown>;
+    styles?: Record<string, string>;
 }
 
 interface Section {
@@ -15,6 +16,7 @@ interface Section {
     component?: string;
     inputs?: Record<string, unknown>;
     columns?: Column[];
+    styles?: Record<string, string>;
 }
 
 @Component({
@@ -27,8 +29,8 @@ interface Section {
       <div *ngIf="section.type === 'component'">
         <ng-container #dynamicContainer></ng-container>
       </div>
-      <div *ngIf="section.type === 'row'" class="row-container">
-        <div *ngFor="let column of section.columns" class="column">
+      <div *ngIf="section.type === 'row'" class="row-container" [ngStyle]="section.styles">
+        <div *ngFor="let column of section.columns" class="column" [ngStyle]="column.styles">
           <ng-container #dynamicContainer></ng-container>
         </div>
       </div>
