@@ -1,0 +1,27 @@
+{
+    "ui-data": {
+      "sections": [
+        {
+          "type": "component",
+          "component": "CampaignBannerComponent",
+          "inputs": {
+            "title": "Special Offer!",
+            "imageUrl": "https://picsum.photos/200"
+          }
+        },
+        {
+          "type": "html",
+          "content": "<h2>Welcome to the Campaign</h2><p>This is a dynamic messageaaa.</p>"
+        },
+        {
+          "type": "component",
+          "component": "CampaignBannerComponent",
+          "inputs": {
+            "title": "Special Offer!",
+            "imageUrl": "https://picsum.photos/200"
+          }
+        }
+      ]
+    }
+  }
+  
