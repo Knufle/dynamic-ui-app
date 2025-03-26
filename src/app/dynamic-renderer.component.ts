@@ -1,6 +1,7 @@
 import { Component, ViewChildren, ViewContainerRef, QueryList, OnInit, Injector } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 interface Column {
     type: 'html' | 'component';
@@ -25,14 +26,14 @@ interface Section {
     imports: [CommonModule, HttpClientModule],
     template: `
     <div *ngFor="let section of sections; let i = index">
-      <div *ngIf="section.type === 'html'" [innerHTML]="section.content" [ngStyle]="section.styles"></div>
+      <div *ngIf="section.type === 'html'" [innerHTML]="getSafeHtml(section.content)" [ngStyle]="section.styles"></div>
       <div *ngIf="section.type === 'component'" [ngStyle]="section.styles">
         <ng-container #dynamicContainer></ng-container>
       </div>
       <div *ngIf="section.type === 'row'" class="row-container" [ngStyle]="section.styles">
         <ng-container *ngFor="let column of section.columns">
           <div [ngStyle]="column.styles">
-            <div *ngIf="column.type === 'html'" [innerHTML]="column.content"></div>
+            <div *ngIf="column.type === 'html'" [innerHTML]="getSafeHtml(column.content)"></div>
             <div *ngIf="column.type === 'component'" [ngStyle]="column.styles">
               <ng-container #dynamicContainer></ng-container>
             </div>
@@ -54,7 +55,11 @@ export class DynamicRendererComponent implements OnInit {
     @ViewChildren('dynamicContainer', { read: ViewContainerRef }) containers!: QueryList<ViewContainerRef>;
     sections: Section[] = [];
 
-    constructor(private http: HttpClient, private injector: Injector) { }
+    constructor(
+        private http: HttpClient, 
+        private injector: Injector,
+        private sanitizer: DomSanitizer
+    ) { }
 
     ngOnInit() {
         this.loadData();
@@ -116,5 +121,10 @@ export class DynamicRendererComponent implements OnInit {
         };
 
         return componentMap[name] ? componentMap[name]() : null;
+    }
+
+    getSafeHtml(content: string | undefined): SafeHtml {
+        if (!content) return '';
+        return this.sanitizer.bypassSecurityTrustHtml(content);
     }
 }
