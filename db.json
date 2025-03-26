@@ -2,12 +2,25 @@
     "ui-data": {
       "sections": [
         {
-          "type": "component",
-          "component": "CampaignBannerComponent",
-          "inputs": {
-            "title": "Special Offer!",
-            "imageUrl": "https://picsum.photos/200"
-          }
+          "type": "row",
+          "columns": [
+            {
+              "type": "component",
+              "component": "CampaignBannerComponent",
+              "inputs": {
+                "title": "Special Offer!",
+                "imageUrl": "https://picsum.photos/200"
+              }
+            },
+            {
+              "type": "component",
+              "component": "CampaignBannerComponent",
+              "inputs": {
+                "title": "Another Offer!",
+                "imageUrl": "https://picsum.photos/200"
+              }
+            }
+          ]
         },
         {
           "type": "html",
@@ -17,11 +30,10 @@
           "type": "component",
           "component": "CampaignBannerComponent",
           "inputs": {
-            "title": "Special Offer!",
+            "title": "Another Offer!",
             "imageUrl": "https://picsum.photos/200"
           }
         }
       ]
     }
   }
-  

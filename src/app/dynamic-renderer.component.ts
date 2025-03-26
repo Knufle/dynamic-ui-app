@@ -2,11 +2,19 @@ import { Component, ViewChildren, ViewContainerRef, QueryList, OnInit, Injector 
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 
-interface Section {
+interface Column {
     type: 'html' | 'component';
     content?: string;
     component?: string;
     inputs?: Record<string, unknown>;
+}
+
+interface Section {
+    type: 'html' | 'component' | 'row';
+    content?: string;
+    component?: string;
+    inputs?: Record<string, unknown>;
+    columns?: Column[];
 }
 
 @Component({
@@ -19,8 +27,24 @@ interface Section {
       <div *ngIf="section.type === 'component'">
         <ng-container #dynamicContainer></ng-container>
       </div>
+      <div *ngIf="section.type === 'row'" class="row-container">
+        <div *ngFor="let column of section.columns" class="column">
+          <ng-container #dynamicContainer></ng-container>
+        </div>
+      </div>
     </div>
-  `
+  `,
+    styles: [`
+    .row-container {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .column {
+      flex: 1;
+    }
+  `]
 })
 export class DynamicRendererComponent implements OnInit {
     @ViewChildren('dynamicContainer', { read: ViewContainerRef }) containers!: QueryList<ViewContainerRef>;
@@ -35,7 +59,6 @@ export class DynamicRendererComponent implements OnInit {
     private loadData() {
         this.http.get<any>('http://localhost:3000/ui-data').subscribe((data) => {
             this.sections = data.sections;
-            // Wait for view to be ready
             setTimeout(() => this.renderComponents(), 0);
         });
     }
@@ -51,24 +74,32 @@ export class DynamicRendererComponent implements OnInit {
 
         for (const section of this.sections) {
             if (section.type === 'component' && section.component) {
-                const container = containerArray[containerIndex];
-                if (!container) continue;
-
-                try {
-                    const componentType = await this.loadComponent(section.component);
-                    if (componentType) {
-                        container.clear();
-                        const componentRef = container.createComponent(componentType);
-                        if (section.inputs && componentRef.instance) {
-                            Object.assign(componentRef.instance, section.inputs);
-                        }
-                        componentRef.changeDetectorRef.detectChanges();
+                await this.renderComponent(containerArray[containerIndex++], section);
+            } else if (section.type === 'row' && section.columns) {
+                for (const column of section.columns) {
+                    if (column.type === 'component' && column.component) {
+                        await this.renderComponent(containerArray[containerIndex++], column);
                     }
-                } catch (error) {
-                    console.error(`Error loading component ${section.component}:`, error);
                 }
-                containerIndex++;
             }
+        }
+    }
+
+    private async renderComponent(container: ViewContainerRef, component: Column | Section) {
+        if (!container || !component.component) return;
+
+        try {
+            const componentType = await this.loadComponent(component.component);
+            if (componentType) {
+                container.clear();
+                const componentRef = container.createComponent(componentType);
+                if (component.inputs && componentRef.instance) {
+                    Object.assign(componentRef.instance as object, component.inputs);
+                }
+                componentRef.changeDetectorRef.detectChanges();
+            }
+        } catch (error) {
+            console.error(`Error loading component ${component.component}:`, error);
         }
     }
 
