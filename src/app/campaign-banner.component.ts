@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
     standalone: true,
     imports: [CommonModule],
     template: `
-    <div class="banner" [ngStyle]="styles">
+    <div [ngStyle]="styles">
       <h2>{{ title }}</h2>
       <img [src]="imageUrl" alt="Banner Image">
     </div>
