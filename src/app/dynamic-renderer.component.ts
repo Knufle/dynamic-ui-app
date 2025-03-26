@@ -107,7 +107,10 @@ export class DynamicRendererComponent implements OnInit {
 
     private async loadComponent(name: string): Promise<any> {
         const componentMap: { [key: string]: () => Promise<any> } = {
-            'CampaignBannerComponent': () => import('./campaign-banner.component').then(m => m.CampaignBannerComponent)
+            'CampaignBannerComponent': () => import('./campaign-banner.component').then(m => m.CampaignBannerComponent),
+            'HeroComponent': () => import('./components/hero.component').then(m => m.HeroComponent),
+            'FeatureComponent': () => import('./components/feature.component').then(m => m.FeatureComponent),
+            'TestimonialComponent': () => import('./components/testimonial.component').then(m => m.TestimonialComponent)
         };
 
         return componentMap[name] ? componentMap[name]() : null;
