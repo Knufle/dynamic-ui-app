@@ -5,24 +5,70 @@
           "type": "row",
           "styles": {
             "display": "flex",
-            "flexDirection": "row",
             "gap": "30px",
             "margin": "20px 0",
             "alignItems": "center"
           },
           "columns": [
             {
+              "type": "html",
+              "content": "<div class='intro-text'><h2>Welcome!</h2><p>Check out our amazing offers:</p></div>",
+              "styles": {
+                "flex": "1",
+                "backgroundColor": "#f8f8f8",
+                "padding": "20px",
+                "borderRadius": "8px"
+              }
+            },
+            {
               "type": "component",
               "component": "CampaignBannerComponent",
               "styles": {
                 "flex": "2",
-                "backgroundColor": "#f8f8f8",
-                "padding": "20px",
+                "backgroundColor": "#f0f0f0",
+                "padding": "15px",
                 "borderRadius": "8px"
               },
               "inputs": {
                 "title": "Special Offer!",
                 "imageUrl": "https://picsum.photos/200"
+              }
+            }
+          ]
+        },
+        {
+          "type": "row",
+          "styles": {
+            "display": "flex",
+            "gap": "20px",
+            "margin": "30px 0",
+            "alignItems": "stretch"
+          },
+          "columns": [
+            {
+              "type": "component",
+              "component": "CampaignBannerComponent",
+              "styles": {
+                "flex": "1",
+                "backgroundColor": "#e8e8e8",
+                "padding": "20px",
+                "borderRadius": "8px"
+              },
+              "inputs": {
+                "title": "Featured Deal",
+                "imageUrl": "https://picsum.photos/200"
+              }
+            },
+            {
+              "type": "html",
+              "content": "<div style='height: 100%;'><h3>Why Choose Us?</h3><ul><li>Best Prices</li><li>Quality Service</li><li>24/7 Support</li></ul></div>",
+              "styles": {
+                "flex": "1",
+                "backgroundColor": "#f8f8f8",
+                "padding": "20px",
+                "borderRadius": "8px",
+                "display": "flex",
+                "alignItems": "center"
               }
             },
             {
@@ -30,35 +76,17 @@
               "component": "CampaignBannerComponent",
               "styles": {
                 "flex": "1",
-                "backgroundColor": "#f0f0f0",
-                "padding": "15px",
+                "backgroundColor": "#e0e0e0",
+                "padding": "20px",
                 "borderRadius": "8px"
               },
               "inputs": {
-                "title": "Another Offer!",
+                "title": "Limited Time!",
                 "imageUrl": "https://picsum.photos/200"
               }
             }
           ]
-        },
-        {
-          "type": "html",
-          "content": "<h2>Welcome to the Campaign</h2><p>This is a dynamic messageaaa.</p>"
-        },
-        {
-          "type": "component",
-          "component": "CampaignBannerComponent",
-          "styles": {
-            "margin": "20px 0",
-            "padding": "30px",
-            "backgroundColor": "#e8e8e8",
-            "borderRadius": "12px"
-          },
-          "inputs": {
-            "title": "Another Offer!",
-            "imageUrl": "https://picsum.photos/200"
-          }
         }
       ]
     }
-  }
+}

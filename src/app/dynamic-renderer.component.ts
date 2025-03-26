@@ -30,9 +30,12 @@ interface Section {
         <ng-container #dynamicContainer></ng-container>
       </div>
       <div *ngIf="section.type === 'row'" class="row-container" [ngStyle]="section.styles">
-        <div *ngFor="let column of section.columns" class="column" [ngStyle]="column.styles">
-          <ng-container #dynamicContainer></ng-container>
-        </div>
+        <ng-container *ngFor="let column of section.columns">
+          <div [ngStyle]="column.styles">
+            <div *ngIf="column.type === 'html'" [innerHTML]="column.content"></div>
+            <ng-container *ngIf="column.type === 'component'" #dynamicContainer></ng-container>
+          </div>
+        </ng-container>
       </div>
     </div>
   `,
@@ -42,9 +45,6 @@ interface Section {
       flex-direction: row;
       gap: 20px;
       margin: 20px 0;
-    }
-    .column {
-      flex: 1;
     }
   `]
 })
