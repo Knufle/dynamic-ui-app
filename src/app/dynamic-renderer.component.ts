@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewContainerRef, ComponentRef, OnInit, Injector, Type, ElementRef, ApplicationRef, createComponent, EnvironmentInjector } from '@angular/core';
+import { Component, ViewChild, ViewContainerRef, ComponentRef, OnInit, Injector, Type, ElementRef, ApplicationRef, createComponent, EnvironmentInjector, Renderer2, createNgModule, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DynamicElement, DynamicUIData } from './interfaces/dynamic-ui.interface';
@@ -16,25 +16,41 @@ interface DynamicComponent {
         <div #container></div>
     `
 })
-export class DynamicRendererComponent implements OnInit {
+export class DynamicRendererComponent implements OnInit, OnChanges {
     @ViewChild('container', { static: true }) container!: ElementRef;
+    @Input() sections: DynamicElement[] = [];
     
-    sections: DynamicElement[] = [];
     private componentRefs: ComponentRef<DynamicComponent>[] = [];
+    private moduleRefs = new Map<string, any>();
 
     constructor(
         private http: HttpClient,
         private injector: EnvironmentInjector,
-        private appRef: ApplicationRef
+        private appRef: ApplicationRef,
+        private renderer: Renderer2
     ) {}
 
     ngOnInit() {
-        this.loadData();
+        if (!this.sections.length) {
+            this.loadData();
+        } else {
+            this.renderElements();
+        }
+    }
+
+    ngOnChanges(changes: SimpleChanges) {
+        if (changes['sections'] && !changes['sections'].firstChange) {
+            this.renderElements();
+        }
     }
 
     private loadData() {
         this.http.get<DynamicUIData>('http://localhost:3000/ui-data').subscribe((data) => {
-            this.sections = data.sections;
+            if ('sections' in data) {
+                this.sections = (data as { sections: DynamicElement[] }).sections;
+            } else {
+                this.sections = (data as DynamicUIData).pages[0].sections;
+            }
             this.renderElements();
         });
     }
