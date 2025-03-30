@@ -5,12 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxDynamicUiService } from './ngx-dynamic-ui.service';
 
 @NgModule({
-  declarations: [
-    NgxDynamicUiComponent
-  ],
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxDynamicUiComponent
   ],
   exports: [
     NgxDynamicUiComponent

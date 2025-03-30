@@ -1,11 +1,14 @@
 import { Component, ViewChild, ElementRef, ApplicationRef, Type, EnvironmentInjector, Renderer2, Input, OnInit, OnChanges, SimpleChanges, ComponentRef, createComponent } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DynamicElement, DynamicUIData, DynamicComponent } from './interfaces/dynamic-ui.interface';
 import { NgxDynamicUiService } from './ngx-dynamic-ui.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
-  selector: 'lib-ngx-dynamic-ui',
+  selector: 'ngx-dynamic-ui',
   template: `<div #container></div>`,
+  standalone: true,
+  imports: [CommonModule, HttpClientModule],
   styles: []
 })
 export class NgxDynamicUiComponent implements OnInit, OnChanges {
