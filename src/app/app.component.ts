@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NgSwitch, NgSwitchDefault, NgSwitchCase } from '@angular/common';
+import { NavigationComponent } from './components/navigation.component';
 
 @Component({
     selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css'],
+    template: `
+        <app-navigation></app-navigation>
+        <router-outlet></router-outlet>
+    `,
     standalone: true,
-    imports: [NgSwitch, NgSwitchDefault, NgSwitchCase, RouterOutlet]
+    imports: [RouterOutlet, NavigationComponent]
 })
 export class AppComponent {
-  title = 'dynamic-ui-app';
+    title = 'dynamic-ui-app';
 }
