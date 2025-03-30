@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { Title } from '@angular/platform-browser';
 import { DynamicRendererComponent } from '../dynamic-renderer.component';
 import { DynamicPage, DynamicUIData } from '../interfaces/dynamic-ui.interface';
 
@@ -18,7 +19,8 @@ export class DynamicPageComponent implements OnInit {
 
     constructor(
         private route: ActivatedRoute,
-        private http: HttpClient
+        private http: HttpClient,
+        private titleService: Title
     ) {}
 
     ngOnInit() {
@@ -32,6 +34,9 @@ export class DynamicPageComponent implements OnInit {
         this.http.get<DynamicUIData>('http://localhost:3000/ui-data')
             .subscribe(data => {
                 this.currentPage = data.pages.find(page => page.path === path);
+                if (this.currentPage) {
+                    this.titleService.setTitle(this.currentPage.title);
+                }
             });
     }
 }
