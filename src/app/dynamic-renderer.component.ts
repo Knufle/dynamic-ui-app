@@ -145,7 +145,9 @@ export class DynamicRendererComponent implements OnInit {
             'CampaignBannerComponent': () => import('./campaign-banner.component').then(m => m.CampaignBannerComponent),
             'HeroComponent': () => import('./components/hero.component').then(m => m.HeroComponent),
             'FeatureComponent': () => import('./components/feature.component').then(m => m.FeatureComponent),
-            'TestimonialComponent': () => import('./components/testimonial.component').then(m => m.TestimonialComponent)
+            'TestimonialComponent': () => import('./components/testimonial.component').then(m => m.TestimonialComponent),
+            'MatCardComponent': () => import('./components/material/mat-card.component').then(m => m.MatCardComponent),
+            'MatButtonComponent': () => import('./components/material/mat-button.component').then(m => m.MatButtonComponent)
         };
 
         return componentMap[name] ? componentMap[name]() : null;
