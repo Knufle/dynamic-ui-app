@@ -1,15 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
-import { DynamicUIData } from '../interfaces/dynamic-ui.interface';
 
 @Component({
     selector: 'app-navigation',
     standalone: true,
     imports: [CommonModule, RouterModule],
     template: `
-        <nav *ngIf="navigation">
+        <nav *ngIf="navigation" class="nav-container" [ngStyle]="styles">
             <h2>{{ navigation.title }}</h2>
             <ul>
                 <li *ngFor="let link of navigation.links">
@@ -19,15 +17,17 @@ import { DynamicUIData } from '../interfaces/dynamic-ui.interface';
         </nav>
     `,
     styles: [`
-        nav {
+        .nav-container {
             padding: 1rem;
             background: #f5f5f5;
+            margin-bottom: 1rem;
         }
         ul {
             list-style: none;
             padding: 0;
             display: flex;
             gap: 1rem;
+            margin: 0;
         }
         a {
             text-decoration: none;
@@ -39,17 +39,16 @@ import { DynamicUIData } from '../interfaces/dynamic-ui.interface';
         a:hover {
             background-color: #e0e0e0;
         }
+        h2 {
+            margin-top: 0;
+            margin-bottom: 1rem;
+        }
     `]
 })
-export class NavigationComponent implements OnInit {
-    navigation?: { title: string; links: { path: string; label: string; }[] };
-
-    constructor(private http: HttpClient) {}
-
-    ngOnInit() {
-        this.http.get<DynamicUIData>('http://localhost:3000/ui-data')
-            .subscribe(data => {
-                this.navigation = data.navigation;
-            });
-    }
+export class NavigationComponent {
+    @Input() navigation?: { 
+        title: string; 
+        links: { path: string; label: string; }[] 
+    };
+    @Input() styles?: Record<string, string>;
 }
