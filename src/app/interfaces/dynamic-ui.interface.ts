@@ -1,3 +1,9 @@
+export interface DynamicPage {
+    path: string;
+    title: string;
+    sections: DynamicElement[];
+}
+
 export interface DynamicElement {
     type: 'component' | 'container' | 'html';
     component?: string;
@@ -11,5 +17,9 @@ export interface DynamicElement {
 }
 
 export interface DynamicUIData {
-    sections: DynamicElement[];
+    pages: DynamicPage[];
+    navigation?: {
+        title: string;
+        links: { path: string; label: string; }[];
+    };
 }
