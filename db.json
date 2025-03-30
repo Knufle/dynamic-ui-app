@@ -1,18 +1,27 @@
 {
     "ui-data": {
-        "navigation": {
-            "title": "Dynamic UI Demo",
-            "links": [
-                { "path": "home", "label": "Home" },
-                { "path": "features", "label": "Features" },
-                { "path": "testimonials", "label": "Testimonials" }
-            ]
-        },
         "pages": [
             {
                 "path": "home",
                 "title": "Home",
                 "sections": [
+                    {
+                        "type": "component",
+                        "component": "NavigationComponent",
+                        "inputs": {
+                            "navigation": {
+                                "title": "Dynamic UI Demo",
+                                "links": [
+                                    { "path": "home", "label": "Home" },
+                                    { "path": "features", "label": "Features" },
+                                    { "path": "testimonials", "label": "Testimonials" }
+                                ]
+                            }
+                        },
+                        "styles": {
+                            "marginBottom": "2rem"
+                        }
+                    },
                     {
                         "type": "component",
                         "component": "HeroComponent",
@@ -46,6 +55,23 @@
                 "path": "features",
                 "title": "Features",
                 "sections": [
+                    {
+                        "type": "component",
+                        "component": "NavigationComponent",
+                        "inputs": {
+                            "navigation": {
+                                "title": "Dynamic UI Demo",
+                                "links": [
+                                    { "path": "home", "label": "Home" },
+                                    { "path": "features", "label": "Features" },
+                                    { "path": "testimonials", "label": "Testimonials" }
+                                ]
+                            }
+                        },
+                        "styles": {
+                            "marginBottom": "2rem"
+                        }
+                    },
                     {
                         "type": "container",
                         "tag": "div",
@@ -110,6 +136,23 @@
                 "path": "testimonials",
                 "title": "Testimonials",
                 "sections": [
+                    {
+                        "type": "component",
+                        "component": "NavigationComponent",
+                        "inputs": {
+                            "navigation": {
+                                "title": "Dynamic UI Demo",
+                                "links": [
+                                    { "path": "home", "label": "Home" },
+                                    { "path": "features", "label": "Features" },
+                                    { "path": "testimonials", "label": "Testimonials" }
+                                ]
+                            }
+                        },
+                        "styles": {
+                            "marginBottom": "2rem"
+                        }
+                    },
                     {
                         "type": "html",
                         "tag": "div",
