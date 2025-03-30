@@ -163,7 +163,7 @@ export class DynamicRendererComponent implements OnInit, OnChanges {
             'FeatureComponent': () => import('./components/feature.component').then(m => m.FeatureComponent),
             'TestimonialComponent': () => import('./components/testimonial.component').then(m => m.TestimonialComponent),
             'MatCardComponent': () => import('./components/material/mat-card.component').then(m => m.MatCardComponent),
-            'MatButtonComponent': () => import('./components/material/mat-button.component').then(m => m.MatButtonComponent)
+            'NavigationComponent': () => import('./components/navigation.component').then(m => m.NavigationComponent)
         };
 
         return componentMap[name] ? componentMap[name]() : null;
