@@ -1,167 +1,157 @@
 {
     "ui-data": {
-      "sections": [
-        {
-          "type": "component",
-          "component": "HeroComponent",
-          "styles": {
-            "backgroundColor": "#f0f8ff",
-            "padding": "40px 20px",
-            "borderRadius": "0 0 20px 20px"
-          },
-          "inputs": {
-            "title": "Dynamic UI Builder",
-            "subtitle": "Create stunning, flexible UIs with JSON-driven layouts and components",
-            "ctaText": "Get Started Today"
-          }
-        },
-        {
-          "type": "row",
-          "styles": {
-            "display": "flex",
-            "gap": "24px",
-            "margin": "40px 20px",
-            "justifyContent": "center"
-          },
-          "columns": [
+        "sections": [
             {
-              "type": "component",
-              "component": "FeatureComponent",
-              "styles": {
-                "flex": "1",
-                "backgroundColor": "white",
-                "maxWidth": "300px"
-              },
-              "inputs": {
-                "icon": "🚀",
-                "title": "Quick Setup",
-                "description": "Get started in minutes with our simple JSON configuration"
-              }
+                "type": "component",
+                "component": "HeroComponent",
+                "inputs": {
+                    "title": "Dynamic UI Builder",
+                    "subtitle": "Create stunning, flexible UIs with JSON-driven layouts and components",
+                    "ctaText": "Get Started Today"
+                },
+                "styles": {
+                    "backgroundColor": "#f0f8ff",
+                    "padding": "40px 20px",
+                    "borderRadius": "0 0 20px 20px"
+                }
             },
             {
-              "type": "component",
-              "component": "FeatureComponent",
-              "styles": {
-                "flex": "1",
-                "backgroundColor": "white",
-                "maxWidth": "300px"
-              },
-              "inputs": {
-                "icon": "🔄",
-                "title": "Dynamic Updates",
-                "description": "Change your UI instantly by updating the backend JSON"
-              }
+                "type": "container",
+                "tag": "div",
+                "styles": {
+                    "display": "flex",
+                    "gap": "24px",
+                    "margin": "40px 20px",
+                    "justifyContent": "center",
+                    "flexWrap": "wrap"
+                },
+                "children": [
+                    {
+                        "type": "component",
+                        "component": "FeatureComponent",
+                        "styles": {
+                            "flex": "1",
+                            "backgroundColor": "white",
+                            "maxWidth": "300px",
+                            "minWidth": "250px"
+                        },
+                        "inputs": {
+                            "icon": "🚀",
+                            "title": "Quick Setup",
+                            "description": "Get started in minutes with our simple JSON configuration"
+                        }
+                    },
+                    {
+                        "type": "component",
+                        "component": "FeatureComponent",
+                        "styles": {
+                            "flex": "1",
+                            "backgroundColor": "white",
+                            "maxWidth": "300px",
+                            "minWidth": "250px"
+                        },
+                        "inputs": {
+                            "icon": "🔄",
+                            "title": "Dynamic Updates",
+                            "description": "Change your UI instantly by updating the backend JSON"
+                        }
+                    },
+                    {
+                        "type": "component",
+                        "component": "FeatureComponent",
+                        "styles": {
+                            "flex": "1",
+                            "backgroundColor": "white",
+                            "maxWidth": "300px",
+                            "minWidth": "250px"
+                        },
+                        "inputs": {
+                            "icon": "🎨",
+                            "title": "Flexible Styling",
+                            "description": "Complete control over styling with dynamic CSS properties"
+                        }
+                    }
+                ]
             },
             {
-              "type": "component",
-              "component": "FeatureComponent",
-              "styles": {
-                "flex": "1",
-                "backgroundColor": "white",
-                "maxWidth": "300px"
-              },
-              "inputs": {
-                "icon": "🎨",
-                "title": "Flexible Styling",
-                "description": "Complete control over styling with dynamic CSS properties"
-              }
+                "type": "html",
+                "tag": "div",
+                "styles": {
+                    "backgroundColor": "#f8f8f8",
+                    "padding": "40px 20px",
+                    "textAlign": "center"
+                },
+                "children": [
+                    {
+                        "type": "html",
+                        "tag": "h2",
+                        "content": "What Our Users Say",
+                        "styles": {
+                            "fontSize": "2em",
+                            "marginBottom": "40px"
+                        }
+                    },
+                    {
+                        "type": "container",
+                        "tag": "div",
+                        "styles": {
+                            "display": "flex",
+                            "gap": "24px",
+                            "justifyContent": "center",
+                            "flexWrap": "wrap"
+                        },
+                        "children": [
+                            {
+                                "type": "component",
+                                "component": "TestimonialComponent",
+                                "styles": {
+                                    "flex": "1",
+                                    "maxWidth": "400px",
+                                    "minWidth": "300px"
+                                },
+                                "inputs": {
+                                    "quote": "This dynamic UI builder has revolutionized how we create and maintain our user interfaces. The JSON-driven approach is brilliant!",
+                                    "authorName": "Sarah Johnson",
+                                    "authorTitle": "Lead Developer",
+                                    "authorImage": "https://picsum.photos/seed/sarah/100"
+                                }
+                            },
+                            {
+                                "type": "component",
+                                "component": "TestimonialComponent",
+                                "styles": {
+                                    "flex": "1",
+                                    "maxWidth": "400px",
+                                    "minWidth": "300px"
+                                },
+                                "inputs": {
+                                    "quote": "The flexibility and ease of use are outstanding. We can update our UI on the fly without deploying new code!",
+                                    "authorName": "Mike Chen",
+                                    "authorTitle": "Product Manager",
+                                    "authorImage": "https://picsum.photos/seed/mike/100"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "type": "component",
+                "component": "CampaignBannerComponent",
+                "styles": {
+                    "margin": "40px auto",
+                    "maxWidth": "800px",
+                    "backgroundColor": "#007bff",
+                    "color": "white",
+                    "padding": "30px",
+                    "borderRadius": "12px",
+                    "textAlign": "center"
+                },
+                "inputs": {
+                    "title": "Ready to transform your UI development?",
+                    "imageUrl": "https://picsum.photos/seed/cta/300/200"
+                }
             }
-          ]
-        },
-        {
-          "type": "html",
-          "content": "<div style='text-align: center; margin: 40px 0;'><h2>What Our Users Say</h2></div>",
-          "styles": {
-            "backgroundColor": "#f8f8f8",
-            "padding": "20px"
-          }
-        },
-        {
-          "type": "row",
-          "styles": {
-            "display": "flex",
-            "gap": "24px",
-            "margin": "20px",
-            "justifyContent": "center"
-          },
-          "columns": [
-            {
-              "type": "component",
-              "component": "TestimonialComponent",
-              "styles": {
-                "flex": "1",
-                "maxWidth": "400px"
-              },
-              "inputs": {
-                "quote": "This dynamic UI builder has revolutionized how we create and maintain our user interfaces. The JSON-driven approach is brilliant!",
-                "authorName": "Sarah Johnson",
-                "authorTitle": "Lead Developer",
-                "authorImage": "https://picsum.photos/seed/sarah/100"
-              }
-            },
-            {
-              "type": "component",
-              "component": "TestimonialComponent",
-              "styles": {
-                "flex": "1",
-                "maxWidth": "400px"
-              },
-              "inputs": {
-                "quote": "The flexibility and ease of use are outstanding. We can update our UI on the fly without deploying new code!",
-                "authorName": "Mike Chen",
-                "authorTitle": "Product Manager",
-                "authorImage": "https://picsum.photos/seed/mike/100"
-              }
-            }
-          ]
-        },
-        {
-          "type": "html",
-          "content": "<div style='background: linear-gradient(135deg, #6e8efb, #a777e3); color: white; padding: 40px; text-align: center; margin: 30px 0; border-radius: 15px;'><h2 style='font-size: 2.5em; margin-bottom: 20px;'>Mix Components & Raw HTML</h2><p style='font-size: 1.2em; max-width: 600px; margin: 0 auto;'>Our dynamic renderer handles both component-based and raw HTML content seamlessly. Build your UI however you prefer!</p></div>",
-          "styles": {
-            "margin": "40px 20px"
-          }
-        },
-        {
-          "type": "html",
-          "content": "<div style='display: flex; justify-content: center; gap: 30px; margin: 40px 0;'><div style='text-align: center; padding: 20px;'><div style='font-size: 3em; color: #007bff; font-weight: bold;'>100+</div><div>Components Created</div></div><div style='text-align: center; padding: 20px;'><div style='font-size: 3em; color: #28a745; font-weight: bold;'>50k+</div><div>Downloads</div></div><div style='text-align: center; padding: 20px;'><div style='font-size: 3em; color: #dc3545; font-weight: bold;'>99%</div><div>Satisfaction Rate</div></div></div>",
-          "styles": {
-            "backgroundColor": "#f8f9fa",
-            "padding": "20px",
-            "borderRadius": "8px"
-          }
-        },
-        {
-          "type": "html",
-          "content": "<div style='position: relative; padding: 60px 20px; overflow: hidden; background-color: #1a1a1a; color: white;'><div style='position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(45deg, #2b2b2b 0%, #2b2b2b 10%, #1a1a1a 10%, #1a1a1a 50%) 0 0 / 15px 15px;'></div><div style='position: relative; z-index: 1; text-align: center;'><h2 style='color: #61dafb; font-size: 2em; margin-bottom: 20px;'>Code Example</h2><pre style='background: #2d2d2d; padding: 20px; border-radius: 8px; display: inline-block; text-align: left; font-family: monospace;'>{<br>  \"type\": \"component\",<br>  \"component\": \"MyComponent\",<br>  \"inputs\": { \"data\": \"value\" }<br>}</pre></div></div>",
-          "styles": {
-            "margin": "40px 0"
-          }
-        },
-        {
-          "type": "component",
-          "component": "CampaignBannerComponent",
-          "styles": {
-            "margin": "40px auto",
-            "maxWidth": "800px",
-            "backgroundColor": "#007bff",
-            "color": "white",
-            "padding": "30px",
-            "borderRadius": "12px",
-            "textAlign": "center"
-          },
-          "inputs": {
-            "title": "Ready to transform your UI development?",
-            "imageUrl": "https://picsum.photos/seed/cta/300/200"
-          }
-        },
-        {
-          "type": "html",
-          "content": "<footer style='text-align: center; padding: 40px 20px; background-color: #f8f9fa;'><div style='max-width: 1200px; margin: 0 auto;'><div style='display: flex; justify-content: space-around; margin-bottom: 30px;'><div><h4>Resources</h4><ul style='list-style: none; padding: 0;'><li><a href='#' style='color: #007bff; text-decoration: none;'>Documentation</a></li><li><a href='#' style='color: #007bff; text-decoration: none;'>API Reference</a></li><li><a href='#' style='color: #007bff; text-decoration: none;'>Examples</a></li></ul></div><div><h4>Community</h4><ul style='list-style: none; padding: 0;'><li><a href='#' style='color: #007bff; text-decoration: none;'>GitHub</a></li><li><a href='#' style='color: #007bff; text-decoration: none;'>Discord</a></li><li><a href='#' style='color: #007bff; text-decoration: none;'>Twitter</a></li></ul></div></div><div style='border-top: 1px solid #dee2e6; padding-top: 20px;'>&copy; 2025 Dynamic UI Builder. All rights reserved.</div></div></footer>",
-          "styles": {
-            "marginTop": "60px"
-          }
-        }
-      ]
+        ]
     }
 }
